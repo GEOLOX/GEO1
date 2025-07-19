@@ -1,0 +1,22 @@
+import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
+
+export default function Layout({ children }) {
+  return (
+    <div className="bg-slate-900 text-gray-100 font-sans antialiased">
+      <style>{`
+        :root {
+          --geolox-blue: #1e40af;
+          --geolox-teal: #0891b2;
+          --geolox-green: #059669;
+          --geolox-dark: #0f172a;
+          --geolox-slate: #1e293b;
+        }
+      `}</style>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </div>
+  );
+} 

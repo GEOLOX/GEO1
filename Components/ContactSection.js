@@ -1,0 +1,111 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Loader2, Send, CheckCircle } from 'lucide-react';
+
+// Mock ContactSubmission utility
+const ContactSubmission = {
+  create: async (data) => {
+    // Simulate network delay
+    await new Promise((res) => setTimeout(res, 1000));
+    // Simulate success
+    return true;
+  },
+};
+
+export default function ContactSection() {
+    const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [error, setError] = useState(null);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+        setError(null);
+        try {
+            await ContactSubmission.create(formData);
+            setStatus('success');
+            setFormData({ name: '', email: '', company: '', message: '' });
+        } catch (err) {
+            setStatus('error');
+            setError('Something went wrong. Please try again.');
+            console.error(err);
+        }
+    };
+
+    return (
+        <section id="contact" className="py-20 bg-slate-800/30">
+            <div className="container mx-auto px-4">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Get Started?</h2>
+                        <p className="mt-4 text-lg text-gray-400">
+                            Let's talk about how Geolox can revolutionize your business. Fill out the form, and we'll be in touch shortly.
+                        </p>
+                         <div className="mt-8 space-y-4 text-gray-300">
+                            <p><strong>Email:</strong> contact@geolox.com</p>
+                            <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                            <p><strong>Address:</strong> 123 Tech Avenue, Silicon Valley, CA 94000</p>
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700/50">
+                            {status === 'success' ? (
+                                <div className="text-center py-10">
+                                    <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
+                                    <h3 className="text-2xl font-bold text-white">Thank you!</h3>
+                                    <p className="text-gray-300 mt-2">Your message has been sent successfully. We'll be in touch soon.</p>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        <div>
+                                            <label htmlFor="name" className="sr-only">Name</label>
+                                            <input type="text" name="name" id="name" placeholder="Your Name" required value={formData.name} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="email" className="sr-only">Email</label>
+                                            <input type="email" name="email" id="email" placeholder="Your Email" required value={formData.email} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label htmlFor="company" className="sr-only">Company</label>
+                                        <input type="text" name="company" id="company" placeholder="Your Company (Optional)" value={formData.company} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="message" className="sr-only">Message</label>
+                                        <textarea name="message" id="message" rows="4" placeholder="Your Message" required value={formData.message} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                    </div>
+                                    <div>
+                                        <button type="submit" disabled={status === 'loading'} className="w-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 hover:from-cyan-400 hover:to-emerald-400 font-bold py-3 rounded-lg flex items-center justify-center">
+                                            {status === 'loading' ? (
+                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            ) : (
+                                                <Send className="mr-2 h-4 w-4" />
+                                            )}
+                                            Send Message
+                                        </button>
+                                    </div>
+                                    {status === 'error' && <p className="text-red-500 text-sm text-center">{error}</p>}
+                                </form>
+                            )}
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
+} 

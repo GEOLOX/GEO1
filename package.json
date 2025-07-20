@@ -1,11 +1,12 @@
 {
-  "name": "geolox-nextjs",
+  "name": "my-industrial-co",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "latest",
@@ -13,5 +14,10 @@
     "react-dom": "latest",
     "framer-motion": "latest",
     "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.0",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^3.0.0"
   }
 } 

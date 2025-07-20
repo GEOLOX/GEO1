@@ -12,12 +12,11 @@ export default function BrandsSection() {
     ];
 
     return (
-        <div className="bg-gray-900 py-16 sm:py-24">
-            <div className="container mx-auto px-4">
-                <h2 className="text-center text-lg font-semibold leading-8 text-gray-400">
-                    Trusted by the world’s most innovative teams
-                </h2>
-                <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-8 items-center justify-items-center">
+        <section className="relative py-16 bg-gradient-to-br from-slate-900 via-blue-900/10 to-emerald-900 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-700/10 via-emerald-700/10 to-blue-900/10 blur-2xl opacity-30 z-0" />
+            <div className="container mx-auto px-4 relative z-10">
+                <h2 className="text-center text-2xl md:text-3xl font-bold text-gray-200 mb-10 tracking-tight">Trusted by the world’s most innovative teams</h2>
+                <div className="mt-4 grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-8 items-center justify-items-center">
                     {brands.map((brand, index) => (
                         <motion.div
                             key={brand.name}
@@ -25,14 +24,16 @@ export default function BrandsSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="flex items-center space-x-2 text-gray-500 hover:text-gray-300 transition-colors"
+                            className="flex flex-col items-center space-y-2 text-gray-400 hover:text-cyan-400 transition-colors"
                         >
-                            <brand.icon className="h-6 w-6" />
+                            <div className="bg-slate-800/70 p-4 rounded-full shadow-md mb-2">
+                                <brand.icon className="h-8 w-8" />
+                            </div>
                             <span className="text-lg font-medium">{brand.name}</span>
                         </motion.div>
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 } 

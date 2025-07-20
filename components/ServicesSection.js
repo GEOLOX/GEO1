@@ -35,17 +35,19 @@ export default function ServicesSection() {
     };
 
     return (
-        <section id="services" className="py-20 bg-slate-800/30">
-            <div className="container mx-auto px-4 text-center">
+        <section id="services" className="relative py-24 bg-gradient-to-br from-emerald-900 via-slate-900/20 to-blue-900/10 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-700/10 via-emerald-700/10 to-blue-900/10 blur-2xl opacity-40 z-0" />
+            <div className="container mx-auto px-4 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">What We Do</h2>
-                    <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                        We provide end-to-end location intelligence solutions tailored to your business needs.
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">What We Do</h2>
+                    <p className="mt-4 text-xl text-gray-300 max-w-2xl mx-auto">
+                        We provide end-to-end location intelligence solutions tailored to your business needs. <span className="text-cyan-300 font-semibold">Unlock efficiency, insight, and growth.</span>
                     </p>
                 </motion.div>
                 <div className="mt-16 grid md:grid-cols-3 gap-10">
@@ -57,13 +59,13 @@ export default function ServicesSection() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.5 }}
-                            className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700/50 hover:border-cyan-400/50 hover:-translate-y-2 transition-all duration-300"
+                            className="bg-slate-800/80 backdrop-blur-sm p-10 rounded-2xl border border-slate-700/40 shadow-xl hover:border-cyan-400/40 hover:-translate-y-2 transition-all duration-300"
                         >
-                            <div className="bg-gradient-to-br from-cyan-400/20 to-emerald-400/20 inline-block p-4 rounded-full mb-6">
-                                <service.icon className="h-8 w-8 text-cyan-400" />
+                            <div className="bg-gradient-to-br from-cyan-400/20 to-emerald-400/20 inline-block p-5 rounded-full mb-6">
+                                <service.icon className="h-10 w-10 text-cyan-400" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                            <p className="text-gray-400">{service.description}</p>
+                            <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
+                            <p className="text-gray-300 text-lg">{service.description}</p>
                         </motion.div>
                     ))}
                 </div>

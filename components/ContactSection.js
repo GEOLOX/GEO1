@@ -40,8 +40,9 @@ export default function ContactSection() {
     };
 
     return (
-        <section id="contact" className="py-20 bg-slate-800/30">
-            <div className="container mx-auto px-4">
+        <section id="contact" className="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900/10 to-emerald-900 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-700/10 via-emerald-700/10 to-blue-900/10 blur-2xl opacity-30 z-0" />
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -49,14 +50,17 @@ export default function ContactSection() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Get Started?</h2>
-                        <p className="mt-4 text-lg text-gray-400">
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Ready to Get Started?</h2>
+                        <p className="mt-4 text-xl text-gray-300">
                             Let's talk about how Geolox can revolutionize your business. Fill out the form, and we'll be in touch shortly.
                         </p>
-                         <div className="mt-8 space-y-4 text-gray-300">
+                        <div className="mt-8 space-y-4 text-gray-300">
                             <p><strong>Email:</strong> contact@geolox.com</p>
                             <p><strong>Phone:</strong> +1 (555) 123-4567</p>
                             <p><strong>Address:</strong> 123 Tech Avenue, Silicon Valley, CA 94000</p>
+                        </div>
+                        <div className="mt-8 p-4 bg-emerald-900/20 border-l-4 border-emerald-400 rounded shadow text-emerald-200">
+                            <span className="font-semibold">Investor Note:</span> We welcome investor inquiries and are happy to provide a detailed deck and demo upon request.
                         </div>
                     </motion.div>
                     <motion.div
@@ -65,7 +69,7 @@ export default function ContactSection() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700/50">
+                        <div className="bg-slate-800/80 backdrop-blur-sm p-10 rounded-2xl border border-slate-700/40 shadow-xl">
                             {status === 'success' ? (
                                 <div className="text-center py-10">
                                     <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
@@ -77,23 +81,23 @@ export default function ContactSection() {
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                         <div>
                                             <label htmlFor="name" className="sr-only">Name</label>
-                                            <input type="text" name="name" id="name" placeholder="Your Name" required value={formData.name} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                            <input type="text" name="name" id="name" placeholder="Your Name" required value={formData.name} onChange={handleChange} className="bg-slate-900 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
                                         </div>
                                         <div>
                                             <label htmlFor="email" className="sr-only">Email</label>
-                                            <input type="email" name="email" id="email" placeholder="Your Email" required value={formData.email} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                            <input type="email" name="email" id="email" placeholder="Your Email" required value={formData.email} onChange={handleChange} className="bg-slate-900 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
                                         </div>
                                     </div>
                                     <div>
                                         <label htmlFor="company" className="sr-only">Company</label>
-                                        <input type="text" name="company" id="company" placeholder="Your Company (Optional)" value={formData.company} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                        <input type="text" name="company" id="company" placeholder="Your Company (Optional)" value={formData.company} onChange={handleChange} className="bg-slate-900 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
                                     </div>
                                     <div>
                                         <label htmlFor="message" className="sr-only">Message</label>
-                                        <textarea name="message" id="message" rows="4" placeholder="Your Message" required value={formData.message} onChange={handleChange} className="bg-slate-800 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-2 w-full" />
+                                        <textarea name="message" id="message" rows="4" placeholder="Your Message" required value={formData.message} onChange={handleChange} className="bg-slate-900 border border-slate-700 text-white placeholder:text-gray-500 rounded px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
                                     </div>
                                     <div>
-                                        <button type="submit" disabled={status === 'loading'} className="w-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 hover:from-cyan-400 hover:to-emerald-400 font-bold py-3 rounded-lg flex items-center justify-center">
+                                        <button type="submit" disabled={status === 'loading'} className="w-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 hover:from-cyan-400 hover:to-emerald-400 font-bold py-3 rounded-lg flex items-center justify-center text-lg shadow-lg transition-all duration-300">
                                             {status === 'loading' ? (
                                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                                             ) : (

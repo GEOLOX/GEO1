@@ -29,12 +29,13 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                     className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-10 font-medium"
                 >
-                    Harness the power of geospatial data to drive your business forward with unparalleled precision and insight. <span className="text-cyan-300 font-semibold">Invest in the future of location intelligence.</span>
+                    Geolox empowers organizations to make smarter, faster decisions with real-time geospatial intelligence. Our platform transforms complex location data into actionable insights, driving efficiency, growth, and competitive advantage across industries.
                 </motion.p>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+                    className="flex flex-col md:flex-row gap-4 justify-center items-center"
                 >
                     <a 
                         href="#contact" 
@@ -42,6 +43,13 @@ export default function HeroSection() {
                         className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 font-bold py-4 px-10 rounded-xl text-xl shadow-lg hover:from-cyan-400 hover:to-emerald-400 transition-all duration-300 transform hover:scale-105 inline-block"
                     >
                         Request an Investor Deck
+                    </a>
+                    <a
+                        href="#services"
+                        onClick={(e) => { e.preventDefault(); document.querySelector('#services').scrollIntoView({ behavior: 'smooth' }); }}
+                        className="bg-slate-900 border border-cyan-400 text-cyan-300 font-bold py-4 px-10 rounded-xl text-xl shadow-lg hover:bg-cyan-900/30 transition-all duration-300 transform hover:scale-105 inline-block"
+                    >
+                        Explore Solutions
                     </a>
                 </motion.div>
                 <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-8">
@@ -51,13 +59,14 @@ export default function HeroSection() {
                     </div>
                     <div className="bg-slate-800/70 rounded-2xl px-8 py-6 shadow-xl border border-emerald-500/20">
                         <div className="text-3xl font-bold text-emerald-400 mb-2">99.9%</div>
-                        <div className="text-gray-300 text-lg">Data Accuracy</div>
+                        <div className="text-gray-300 text-lg">Data Accuracy*</div>
                     </div>
                     <div className="bg-slate-800/70 rounded-2xl px-8 py-6 shadow-xl border border-blue-500/20">
                         <div className="text-3xl font-bold text-blue-400 mb-2">24/7</div>
                         <div className="text-gray-300 text-lg">Uptime & Support</div>
                     </div>
                 </div>
+                <div className="mt-4 text-xs text-gray-400">*Accuracy metric based on internal platform benchmarks, available upon request.</div>
             </div>
         </section>
     );

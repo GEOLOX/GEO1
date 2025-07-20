@@ -6,8 +6,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'Features', href: '#features' },
+    { name: 'Solutions', href: '#services' },
+    { name: 'Platform Capabilities', href: '#features' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -25,7 +25,7 @@ export default function Header() {
             <a href="/" className="flex items-center space-x-3">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/f01cd76d7_GEOLOXLogoinDeepBluesandGreens1.png" 
-                alt="Geolox Logo" 
+                alt="Geolox company logo: stylized G in deep blue and green" 
                 className="h-10 w-10 rounded-lg" 
               />
               <span className="text-xl font-bold text-white">Geolox</span>
@@ -44,7 +44,7 @@ export default function Header() {
             </nav>
             <div className="hidden md:block">
               <a href="#contact" onClick={(e) => scrollToSection(e, e.currentTarget.href)} className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 hover:from-cyan-400 hover:to-emerald-400 transition-all duration-300 font-semibold px-5 py-2 rounded-lg">
-                Get Started
+                Request a Demo or Proposal
               </a>
             </div>
             <div className="md:hidden">
@@ -82,7 +82,7 @@ export default function Header() {
                 </a>
               ))}
                <a href="#contact" onClick={(e) => scrollToSection(e, e.currentTarget.href)} className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 hover:from-cyan-400 hover:to-emerald-400 transition-all duration-300 font-semibold px-6 py-3 rounded-lg text-xl mt-4 inline-block">
-                Get Started
+                Request a Demo or Proposal
               </a>
             </nav>
           </motion.div>

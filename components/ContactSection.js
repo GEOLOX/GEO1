@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Loader2, Send, CheckCircle } from 'lucide-react';
+import ContactSubmission from '../utils/ContactSubmission';
 
-// Mock ContactSubmission utility
-const ContactSubmission = {
-  create: async (data) => {
-    // Simulate network delay
-    await new Promise((res) => setTimeout(res, 1000));
-    // Simulate success
-    return true;
-  },
-};
-
+/**
+ * ContactSection - Contact form and company info section
+ * @returns {JSX.Element}
+ */
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
     const [error, setError] = useState(null);
 
+    /**
+     * Handle input changes for the form
+     * @param {React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>} e
+     */
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    /**
+     * Handle form submission
+     * @param {React.FormEvent<HTMLFormElement>} e
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
